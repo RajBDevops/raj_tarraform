@@ -1,3 +1,5 @@
-# Terraform for AWS project
+# Terraform project
 
-# Terraform for Azure project
+### Terraform-AWS
+
+### Terraform-Azure
