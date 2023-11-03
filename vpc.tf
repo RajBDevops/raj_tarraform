@@ -173,3 +173,15 @@ resource "aws_network_acl_association" "tf-ecomm-pub-nacl-NACL-asc-B" {
   subnet_id      = aws_subnet.tf-ecomm-pub-sn-B.id
 }
 
+# Create PVT NACL association
+
+resource "aws_network_acl_association" "tf-ecomm-pvt-nacl-NACL-asc-A" {
+  network_acl_id = aws_network_acl.tf-ecomm-pvt-nacl.id
+  subnet_id      = aws_subnet.tf-ecomm-pvt-sn-A.id
+}
+resource "aws_network_acl_association" "tf-ecomm-pvt-nacl-NACL-asc-B" {
+  network_acl_id = aws_network_acl.tf-ecomm-pvt-nacl.id
+  subnet_id      = aws_subnet.tf-ecomm-pvt-sn-B.id
+}
+
+
