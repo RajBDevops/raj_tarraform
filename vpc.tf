@@ -77,3 +77,13 @@ resource "aws_route_table" "tf-ecomm-pub-rt" {
   }
 }
 
+# create pvt route table
+resource "aws_route_table" "tf-ecomm-pvt-rt" {
+  vpc_id = aws_vpc.tf-ecomm.id
+
+   tags = {
+    Name = "ecomm-pvt-route-table"
+  }
+}
+
+
