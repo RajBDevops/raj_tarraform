@@ -53,3 +53,11 @@ resource "aws_subnet" "tf-ecomm-pvt-sn-B" {
   }
 }
 
+# Created internet gateway
+resource "aws_internet_gateway" "tf-ecomm-igw" {
+  vpc_id = aws_vpc.tf-ecomm.id
+
+  tags = {
+    Name = "internetgate_way"
+  }
+}
