@@ -135,3 +135,41 @@ resource "aws_network_acl" "tf-ecomm-pub-nacl" {
     Name = "public-nacls"
   }
 }
+
+#Create pravite nacl
+resource "aws_network_acl" "tf-ecomm-pvt-nacl" {
+  vpc_id = aws_vpc.tf-ecomm.id
+
+  egress {
+    protocol   = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 65535
+  }
+
+  ingress {
+    protocol   = "tcp"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 65535
+  }
+
+  tags = {
+    Name = "pvt-nacls"
+  }
+}
+
+# Create NACL association
+resource "aws_network_acl_association" "tf-ecomm-pub-nacl-NACL-asc-A" {
+  network_acl_id = aws_network_acl.tf-ecomm-pub-nacl.id
+  subnet_id      = aws_subnet.tf-ecomm-pub-sn-A.id
+}
+resource "aws_network_acl_association" "tf-ecomm-pub-nacl-NACL-asc-B" {
+  network_acl_id = aws_network_acl.tf-ecomm-pub-nacl.id
+  subnet_id      = aws_subnet.tf-ecomm-pub-sn-B.id
+}
+
